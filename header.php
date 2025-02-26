@@ -16,7 +16,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="reservation.php">Prendre un rendez-vous</a></li>
                     <li class="nav-item"><a class="nav-link" href="profil.php">Mon profil</a></li>
                     <li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>
