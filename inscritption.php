@@ -20,10 +20,6 @@
                     <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
                 </div>
                 <div class="mb-3">
-                    <label for="adresse" class="form-label">Adresse postale</label>
-                    <input type="text" class="form-control" id="adresse" name="adresse" required>
-                </div>
-                <div class="mb-3">
                     <label for="telephone" class="form-label">Numéro de téléphone</label>
                     <input type="tel" class="form-control" id="telephone" name="telephone" required>
                 </div>
@@ -39,7 +35,13 @@
                     <label for="confirm_password" class="form-label">Confirmer le mot de passe</label>
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                 </div>
-                <input type="hidden" name="csrf_token" value="TOKEN_A_REMPLACER">
+                <?php
+                    session_start();
+                    if (!isset($_SESSION['csrf_token'])) {
+                        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+                    }
+                ?>
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                 <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
             </form>
             <div class="text-center mt-3">

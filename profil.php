@@ -1,4 +1,26 @@
-<?php include 'header.php'; ?>
+<?php
+session_start();
+require 'bdd.php';
+include 'header.php';
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error'] = "Vous devez être connecté pour voir cette page.";
+    header("Location: connexion.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT nom, prenom, date_naissance, telephone, email FROM users WHERE id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    $_SESSION['error'] = "Utilisateur introuvable.";
+    header("Location: connexion.php");
+    exit();
+}
+?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -9,29 +31,25 @@
                 <form action="traitement_profil.php" method="POST">
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" value="DUPONT" required>
+                        <input type="text" class="form-control" id="nom" name="nom" value="<?= htmlspecialchars($user['nom']) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" value="Jean" required>
+                        <input type="text" class="form-control" id="prenom" name="prenom" value="<?= htmlspecialchars($user['prenom']) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="date_naissance" class="form-label">Date de naissance</label>
-                        <input type="date" class="form-control" id="date_naissance" name="date_naissance" value="1990-01-01" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="adresse" class="form-label">Adresse postale</label>
-                        <input type="text" class="form-control" id="adresse" name="adresse" value="123 Rue de Paris" required>
+                        <input type="date" class="form-control" id="date_naissance" name="date_naissance" value="<?= htmlspecialchars($user['date_naissance']) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="telephone" class="form-label">Numéro de téléphone</label>
-                        <input type="tel" class="form-control" id="telephone" name="telephone" value="0612345678" required>
+                        <input type="tel" class="form-control" id="telephone" name="telephone" value="<?= htmlspecialchars($user['telephone']) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="jean.dupont@example.com" required>
+                        <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
                     </div>
-                    <input type="hidden" name="csrf_token" value="TOKEN_A_REMPLACER">
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? '' ?>">
                     <button type="submit" class="btn btn-primary w-100">Modifier mon profil</button>
                 </form>
 
@@ -56,7 +74,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                 <form action="supprimer_compte.php" method="POST">
-                    <input type="hidden" name="csrf_token" value="TOKEN_A_REMPLACER">
+                    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?? '' ?>">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>
             </div>
