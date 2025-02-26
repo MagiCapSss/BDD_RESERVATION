@@ -54,6 +54,10 @@ if (!$user) {
                 </form>
 
                 <div class="text-center mt-3">
+                    <a href="deconnexion.php" class="btn btn-warning">Se Déconnecter</a>
+                </div>
+
+                <div class="text-center mt-3">
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">Supprimer mon compte</button>
                 </div>
             </div>
