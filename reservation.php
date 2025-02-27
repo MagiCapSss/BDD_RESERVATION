@@ -50,7 +50,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<div class="container mt-4">
+<div class="container mt-5">
     <h3 class="text-center">Mes Réservations</h3>
     <div class="row justify-content-center">
         <div class="col-md-8">
