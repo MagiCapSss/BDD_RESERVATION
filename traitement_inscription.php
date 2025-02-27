@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         $_SESSION['error'] = "Échec de la vérification CSRF.";
-        header("Location: inscription.php");
+        echo "<script>alert('Échec de la vérification CSRF.'); window.location.href='inscritption.php';</script>";
         exit();
     }
 
@@ -23,7 +23,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($password !== $confirm_password) {
         $_SESSION['error'] = "Les mots de passe ne correspondent pas.";
-        header("Location: inscritption.php");
+        echo "<script>alert('Les mots de passe ne correspondent pas.'); window.location.href='inscritption.php';</script>";
+        exit();
+    }
+
+    if (!preg_match("/^\\+?[0-9]{10,15}$/", $telephone)) {
+        $_SESSION['error'] = "Numéro de téléphone invalide.";
+        echo "<script>alert('Numéro de téléphone incorrect !'); window.location.href='inscritption.php';</script>";
+        exit();
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Adresse email invalide.";
+        echo "<script>alert('Adresse email invalide !'); window.location.href='inscritption.php';</script>";
         exit();
     }
 
@@ -33,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->fetch()) {
         $_SESSION['error'] = "Cet email est déjà utilisé.";
-        header("Location: inscritption.php");
+        echo "<script>alert('Cet email est déjà utilisé.'); window.location.href='inscritption.php';</script>";
         exit();
     }
 
@@ -46,11 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($success) {
         $_SESSION['success'] = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
-        header("Location: connexion.php");
+        echo "<script>alert('Inscription réussie !'); window.location.href='connexion.php';</script>";
         exit();
     } else {
         $_SESSION['error'] = "Une erreur est survenue. Veuillez réessayer.";
-        header("Location: inscritption.php");
+        echo "<script>alert('Une erreur est survenue. Veuillez réessayer.'); window.location.href='inscritption.php';</script>";
         exit();
     }
 } else {

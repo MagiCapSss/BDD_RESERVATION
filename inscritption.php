@@ -21,7 +21,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="telephone" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                    <input type="tel" name="telephone" id="telephone" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
