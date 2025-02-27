@@ -21,16 +21,16 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-6 mb-5">
             <div class="card shadow p-4">
-                <h2 class="text-center mb-4">Réserver un créneau</h2>
+                <h2 class="text-center mb-5">Réserver un créneau</h2>
 
                 <form action="traitement_reservation.php" method="POST">
                     <div class="mb-3">
                         <label for="date" class="form-label">Choisissez une date</label>
                         <input type="date" class="form-control" id="date" name="date" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 mt-4">
                         <label for="heure" class="form-label">Choisissez un créneau horaire</label>
                         <select class="form-control" id="heure" name="heure" required>
                             <option value="08:00">08:00 - 09:00</option>
@@ -43,15 +43,15 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </select>
                     </div>
                     <input type="hidden" name="csrf_token" value="TOKEN_A_REMPLACER">
-                    <button type="submit" class="btn btn-primary w-100">Réserver</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-4">Réserver</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container mt-5">
-    <h3 class="text-center">Mes Réservations</h3>
+<div class="container mt-5 mb-5">
+    <h3 class="text-center mb-5">Mes Réservations</h3>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <?php if (empty($reservations)): ?>
