@@ -15,7 +15,7 @@
                     Que ce soit pour une soirée romantique, un dîner d’affaires ou une célébration spéciale, Le Borcelle vous promet une expérience culinaire unique, alliant excellence gastronomique et service d’exception. <br><br>
                     Venez découvrir l’art de la gastronomie au Borcelle et laissez-vous envoûter par une cuisine aussi audacieuse que délicate.</p>
                 </div>
-                <img src="assets/img/ImageRestaurant.png" class="image-resto" alt="Image du restaurant">
+                <img src="/assets/img/ImageRestaurant.png" class="image-resto" alt="Image du restaurant">
             </div>
         </section>
 
@@ -29,19 +29,19 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="assets/img/NoixStJacques.png" class="d-block w-100" alt="...">
+                <img src="/assets/img/NoixStJacques.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 class="textCarousel fw-bold">Noix de St Jacques</h5>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="assets/img/PoissonEtLégumes.png" class="d-block w-100" alt="...">
+                <img src="/assets/img/PoissonEtLégumes.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 class="textCarousel fw-bold">Poisson et sa montagne de légumes</h5>
                 </div>
               </div>
               <div class="carousel-item">
-                <img src="assets/img/QuinoaAuSaumon.png" class="d-block w-100" alt="...">
+                <img src="/assets/img/QuinoaAuSaumon.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 class="textCarousel fw-bold">Saumon sur son lit de quinoa</h5>
                 </div>
