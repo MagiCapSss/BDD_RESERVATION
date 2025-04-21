@@ -1,6 +1,8 @@
 {
-    "name": "vendor/bdd-reservation",
+    "name": "bdd-reservation",
     "description": "App de réservation en PHP",
-    "require": {}
+    "require": {
+      "php": "^7.4 || ^8.0" 
+    }
   }
   
