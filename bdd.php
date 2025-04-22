@@ -1,8 +1,8 @@
 <?php
-$host = '127.0.0.1';
-$dbname = 'reservation_db';
-$username = 'root';
-$password = '';
+$host = 'sql201.infinityfree.com';
+$dbname = 'if0_38808827_reservation_db';
+$username = 'if0_38808827';
+$password = '9piM0A86CHE';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
